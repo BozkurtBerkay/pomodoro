@@ -1,0 +1,28 @@
+<html data-theme="business">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="w-full h-screen">
+    <span class="w-full h-1/4 flex items-center justify-center text-xl"><i class="fa-solid fa-hourglass p-2"></i> : <span class="p-2" id="pomodoro"></span> / 6</span>
+    <div class="flex w-full h-1/2 justify-center items-center">
+      <span class="countdown font-mono text-gray-300" style="font-size: 300px;">
+        <span id="hour" style="--value: 10"></span>:
+        <span id="minute" style="--value: 24"></span>:
+        <span id="second" style="--value: 51"></span>
+      </span>
+    </div>
+    <div class="flex w-full h-1/5 justify-center items-center">
+      <i class="fa fa-play text-4xl cursor-pointer text-red-300 hover:text-gray-100 active:text-blue-300" id="play"></i>
+      <i class="fa fa-pause text-4xl cursor-pointer text-red-300 hover:text-blue-300 active:text-green-400 hidden" id="pause"></i>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
