@@ -1,23 +1,47 @@
+const pomodoroForm = document.getElementById("pomodoroForm");
+const pomodoroFormSection = document.getElementById("pomodoroFormSection");
+const pomodoroSection = document.getElementById("pomodoroSection");
+
 const hour = document.getElementById("hour");
 const minute = document.getElementById("minute");
 const second = document.getElementById("second");
 const play = document.getElementById("play");
 const pause = document.getElementById("pause");
-const pomodoro = document.getElementById("pomodoro");
+const pomodoroCount = document.getElementById("pomodoroCount");
+const currentCount = document.getElementById("currentCount");
+
+const _pomodoroCount = document.getElementById("_pomodoroCount");
+const _currentMinute = document.getElementById("_currentMinute");
+const _restMinute = document.getElementById("_restMinute");
 
 let currentHour = 0;
-let currentMinute = 40;
+let currentMinute = 0;
+let restMinute = 10;
 let currentSecond = 0;
+
+let startInterval;
+let nextPomodoro = false;
+let pomodoroCurrentCount = 0;
+
+handleSubmit = (e) => {
+  e.preventDefault();
+  currentMinute = _currentMinute.value;
+  restMinute = _restMinute.value;
+
+  currentCount.textContent = pomodoroCurrentCount;
+  pomodoroCount.textContent = _pomodoroCount.value;
+  minute.style.cssText = "--value: " + currentMinute;
+  second.style.cssText = "--value: " + currentSecond--;
+
+  console.log("ekran göster");
+  pomodoroFormSection.classList.add('hidden');
+  pomodoroSection.classList.remove('hidden');
+}
 
 hour.style.cssText = "--value: " + currentHour;
 minute.style.cssText = "--value: " + currentMinute;
 second.style.cssText = "--value: " + currentSecond;
-console.log(hour.style.cssText);
 
-let startInterval;
-let nextPomodoro = false;
-let pomodoroCount = 0;
-pomodoro.textContent = pomodoroCount;
 
 play.addEventListener("click", () => {
   play.classList.add("hidden");
@@ -33,14 +57,14 @@ play.addEventListener("click", () => {
         document.body.style.backgroundColor =
           "hsla(var(--b1)/var(--tw-bg-opacity,1))";
         console.log("pomodoro bitti");
-        currentMinute = 40;
+        currentMinute = _currentMinute.value;
         currentSecond = 0;
         nextPomodoro = false;
-        pomodoroCount++;
-        pomodoro.textContent = pomodoroCount;
+        pomodoroCurrentCount++;
+        currentCount.textContent = pomodoroCurrentCount;
       } else {
         console.log("molaya girdi");
-        currentMinute = 10;
+        currentMinute = restMinute;
         currentSecond = 0;
         nextPomodoro = true;
         document.body.style.backgroundColor = "#b45309";
